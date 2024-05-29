@@ -8,7 +8,7 @@ var close_button = document.getElementById('close-btn');
 
 close_button.addEventListener('click', event => { panel.style.display = 'none'; });
 
-fetch('http://127.0.0.1:5000/api')
+fetch('https://flask-todo-ts81.onrender.com/api')
   .then(response => response.json())
 
   .then(data => {
