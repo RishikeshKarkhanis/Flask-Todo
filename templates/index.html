@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My-Todo</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="shortcut icon" href="/static/icons/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="popup-panel" id="popup-panel">
+        <div class="add-container">
+            <div class="top-pane">
+                <p>Add Task</p>
+                <button id="close-btn">x</button>
+            </div>
+
+            <form action="/add" method="post" class="bottom-pane">
+                <input type="text" name="task" id="task" placeholder="Add Task">
+                <button type="submit" class="add-btn-post">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <nav>
+        <h1 class="title-btn">TaskDone</h1>
+        <button class="add-btn-click" id="add-btn-click" name="add">Add Task</button>
+    </nav>
+
+    <div class="main-panel">
+
+        <div class="sub-panel">
+
+            <h1 class="task-title">Tasks</h1>
+
+            <div class="taskpanel" id="taskpanel">
+
+                {%for task in tasks%}
+                <div class="task">
+                    <p class="task_title" id="{{'P-'+task.uid}}">{{task.title}}</p>
+
+                    <div class="buttons">
+
+                        <form action="/done/{{task.uid}}" method="put">
+                            <button class="done-btn" id="{{task.uid}}" type="submit">Done</button>
+                        </form>
+
+                        <form action="/delete/{{task.uid}}" method="delete">
+                            <button class="delete-btn" id="{{task.uid}}" type="submit">Delete</button>
+                        </form>
+                    </div>
+
+                </div>
+                {%endfor%}
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="/static/scripts/index.js"></script>
+
+</html>
